@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Law Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Indian Law Assistant</div>
+        <nav>
+            <ul>
+                <li><a href="#gpt-tab" class="active">GPT for Indian Lawyers</a></li>
+                <li><a href="#pdf-tab">PDF Annotation Tool</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <img src="{{ url_for('static', filename='user-icon.png') }}" alt="User Profile">
+            <div class="dropdown">
+                <a href="#">Account Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="gpt-tab" class="tab active">
+            <h2>GPT for Indian Lawyers</h2>
+            <div class="query-input">
+                <input type="text" id="query" placeholder="Ask a legal question...">
+                <button id="submit-query">Submit</button>
+            </div>
+            <div class="response-display" id="response"></div>
+            <div class="previous-queries">
+                <h3>Previous Queries</h3>
+                <ul id="query-history"></ul>
+            </div>
+        </section>
+
+        <section id="pdf-tab" class="tab">
+            <h2>PDF Annotation Tool</h2>
+            <div class="document-upload">
+                <button id="upload-btn">Upload PDF</button>
+                <input type="file" id="file-input" accept=".pdf" style="display: none;">
+                <div id="drop-zone">Drag and drop PDF here</div>
+            </div>
+            <div class="pdf-annotation-container">
+                <div class="pdf-viewer">
+                    <div class="viewer-controls">
+                        <button id="prev-page">Previous</button>
+                        <span id="page-info"></span>
+                        <button id="next-page">Next</button>
+                        <button id="zoom-in">Zoom In</button>
+                        <button id="zoom-out">Zoom Out</button>
+                    </div>
+                    <div id="pdf-render"></div>
+                </div>
+                <div class="annotation-section">
+                    <h3>Annotations</h3>
+                    <button id="add-bullet">Add New Bullet Point</button>
+                    <div id="annotation-list"></div>
+                    <button id="save-annotations">Save Annotations</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
